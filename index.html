@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiffin Counter — Central Canteen Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER: pegboard with tile title -->
+  <header class="pegboard">
+    <div class="pegboard-inner">
+      <h1 class="tile-title" aria-label="Tiffin Counter">
+        <span class="tile">T</span><span class="tile">I</span><span class="tile">F</span><span class="tile">F</span><span class="tile">I</span><span class="tile">N</span>
+        <span class="tile-gap"></span>
+        <span class="tile">C</span><span class="tile">O</span><span class="tile">U</span><span class="tile">N</span><span class="tile">T</span><span class="tile">E</span><span class="tile">R</span>
+      </h1>
+      <p class="pegboard-sub">Central Canteen, Pune Campus</p>
+      <p class="pegboard-sub small">Open 8:00 AM to 8:00 PM daily</p>
+    </div>
+  </header>
+
+  <!-- STICKY FILTER BAR -->
+  <div class="filter-bar" id="filterBar">
+    <div class="filter-inner">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search the menu…" aria-label="Search the menu">
+      </div>
+
+      <div class="pill-row" id="pillRow" role="group" aria-label="Filter by category">
+        <button class="pill active" data-category="all">All</button>
+        <button class="pill" data-category="Breakfast">Breakfast</button>
+        <button class="pill" data-category="Main Course">Main course</button>
+        <button class="pill" data-category="Snacks">Snacks</button>
+        <button class="pill" data-category="Beverages">Beverages</button>
+        <button class="pill" data-category="Desserts">Desserts</button>
+      </div>
+
+      <label class="veg-toggle">
+        <span class="veg-dot"></span>
+        Veg only
+        <input type="checkbox" id="vegToggle">
+        <span class="switch"><span class="switch-knob"></span></span>
+      </label>
+    </div>
+  </div>
+
+  <main class="menu-wrap">
+
+    <!-- Breakfast -->
+    <section class="menu-section" data-section="Breakfast">
+      <div class="section-head">
+        <h2>Breakfast</h2>
+        <span class="section-time">8:00 – 11:00 AM</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th class="th-name">Item</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price sortable" data-sort="price">Price</th>
+            <th class="th-add"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="menu-row" data-name="Poha" data-category="Breakfast" data-veg="veg" data-price="40">
+            <td class="td-name"><span class="veg-mark veg"></span>Poha</td>
+            <td class="td-desc">Flattened rice tempered with mustard seeds, curry leaves and peanuts.</td>
+            <td class="td-price">₹40</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Poha to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Masala Omelette" data-category="Breakfast" data-veg="nonveg" data-price="50">
+            <td class="td-name"><span class="veg-mark nonveg"></span>Masala Omelette</td>
+            <td class="td-desc">Two eggs whisked with onion, green chili and coriander.</td>
+            <td class="td-price">₹50</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Masala Omelette to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Idli Sambar" data-category="Breakfast" data-veg="veg" data-price="45">
+            <td class="td-name"><span class="veg-mark veg"></span>Idli Sambar (2 pcs)</td>
+            <td class="td-desc">Steamed rice cakes served with lentil sambar and coconut chutney.</td>
+            <td class="td-price">₹45</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Idli Sambar to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Bread Pakora" data-category="Breakfast" data-veg="veg" data-price="35">
+            <td class="td-name"><span class="veg-mark veg"></span>Bread Pakora</td>
+            <td class="td-desc">Stuffed bread fritters, deep fried and served hot.</td>
+            <td class="td-price">₹35</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Bread Pakora to tray">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Main Course -->
+    <section class="menu-section" data-section="Main Course">
+      <div class="section-head">
+        <h2>Main course</h2>
+        <span class="section-time">12:00 – 3:00 PM</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th class="th-name">Item</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price sortable" data-sort="price">Price</th>
+            <th class="th-add"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="menu-row" data-name="Veg Thali" data-category="Main Course" data-veg="veg" data-price="90">
+            <td class="td-name"><span class="veg-mark veg"></span>Veg Thali</td>
+            <td class="td-desc">Dal, seasonal sabzi, rice, two rotis, papad and salad.</td>
+            <td class="td-price">₹90</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Veg Thali to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Chicken Curry with Rice" data-category="Main Course" data-veg="nonveg" data-price="120">
+            <td class="td-name"><span class="veg-mark nonveg"></span>Chicken Curry with Rice</td>
+            <td class="td-desc">Home-style chicken curry served with steamed rice.</td>
+            <td class="td-price">₹120</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Chicken Curry with Rice to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Paneer Butter Masala" data-category="Main Course" data-veg="veg" data-price="100">
+            <td class="td-name"><span class="veg-mark veg"></span>Paneer Butter Masala with Roti</td>
+            <td class="td-desc">Cottage cheese in a mild tomato gravy, with two rotis.</td>
+            <td class="td-price">₹100</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Paneer Butter Masala to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Egg Biryani" data-category="Main Course" data-veg="nonveg" data-price="85">
+            <td class="td-name"><span class="veg-mark nonveg"></span>Egg Biryani</td>
+            <td class="td-desc">Fragrant spiced rice layered with boiled eggs.</td>
+            <td class="td-price">₹85</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Egg Biryani to tray">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Snacks -->
+    <section class="menu-section" data-section="Snacks">
+      <div class="section-head">
+        <h2>Snacks</h2>
+        <span class="section-time">4:00 – 6:00 PM</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th class="th-name">Item</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price sortable" data-sort="price">Price</th>
+            <th class="th-add"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="menu-row" data-name="Veg Sandwich" data-category="Snacks" data-veg="veg" data-price="35">
+            <td class="td-name"><span class="veg-mark veg"></span>Veg Sandwich</td>
+            <td class="td-desc">Grilled bread with cucumber, tomato and mint chutney.</td>
+            <td class="td-price">₹35</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Veg Sandwich to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Samosa" data-category="Snacks" data-veg="veg" data-price="20">
+            <td class="td-name"><span class="veg-mark veg"></span>Samosa (2 pcs)</td>
+            <td class="td-desc">Crispy pastry filled with spiced potato and peas.</td>
+            <td class="td-price">₹20</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Samosa to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Chicken Cutlet" data-category="Snacks" data-veg="nonveg" data-price="45">
+            <td class="td-name"><span class="veg-mark nonveg"></span>Chicken Cutlet</td>
+            <td class="td-desc">Pan-fried minced chicken patty, lightly spiced.</td>
+            <td class="td-price">₹45</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Chicken Cutlet to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="French Fries" data-category="Snacks" data-veg="veg" data-price="40">
+            <td class="td-name"><span class="veg-mark veg"></span>French Fries</td>
+            <td class="td-desc">Crispy salted potato fries, served with ketchup.</td>
+            <td class="td-price">₹40</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add French Fries to tray">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Beverages -->
+    <section class="menu-section" data-section="Beverages">
+      <div class="section-head">
+        <h2>Beverages</h2>
+        <span class="section-time">All day</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th class="th-name">Item</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price sortable" data-sort="price">Price</th>
+            <th class="th-add"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="menu-row" data-name="Masala Chai" data-category="Beverages" data-veg="veg" data-price="15">
+            <td class="td-name"><span class="veg-mark veg"></span>Masala Chai</td>
+            <td class="td-desc">Spiced milk tea, brewed strong.</td>
+            <td class="td-price">₹15</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Masala Chai to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Filter Coffee" data-category="Beverages" data-veg="veg" data-price="20">
+            <td class="td-name"><span class="veg-mark veg"></span>Filter Coffee</td>
+            <td class="td-desc">South Indian style coffee, served frothy.</td>
+            <td class="td-price">₹20</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Filter Coffee to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Cold Coffee" data-category="Beverages" data-veg="veg" data-price="40">
+            <td class="td-name"><span class="veg-mark veg"></span>Cold Coffee</td>
+            <td class="td-desc">Chilled coffee blended with a scoop of ice cream.</td>
+            <td class="td-price">₹40</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Cold Coffee to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Fresh Lime Soda" data-category="Beverages" data-veg="veg" data-price="30">
+            <td class="td-name"><span class="veg-mark veg"></span>Fresh Lime Soda</td>
+            <td class="td-desc">Lime, soda and a sprig of mint, sweet or salted.</td>
+            <td class="td-price">₹30</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Fresh Lime Soda to tray">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Desserts -->
+    <section class="menu-section" data-section="Desserts">
+      <div class="section-head">
+        <h2>Desserts</h2>
+        <span class="section-time">All day</span>
+      </div>
+      <table class="menu-table">
+        <thead>
+          <tr>
+            <th class="th-name">Item</th>
+            <th class="th-desc">Description</th>
+            <th class="th-price sortable" data-sort="price">Price</th>
+            <th class="th-add"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="menu-row" data-name="Gulab Jamun" data-category="Desserts" data-veg="veg" data-price="30">
+            <td class="td-name"><span class="veg-mark veg"></span>Gulab Jamun (2 pcs)</td>
+            <td class="td-desc">Soft milk dumplings soaked in sugar syrup.</td>
+            <td class="td-price">₹30</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Gulab Jamun to tray">Add</button></td>
+          </tr>
+          <tr class="menu-row" data-name="Fruit Custard" data-category="Desserts" data-veg="veg" data-price="35">
+            <td class="td-name"><span class="veg-mark veg"></span>Fruit Custard</td>
+            <td class="td-desc">Seasonal fruits folded into chilled vanilla custard.</td>
+            <td class="td-price">₹35</td>
+            <td class="td-add"><button class="add-btn" aria-label="Add Fruit Custard to tray">Add</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <p class="empty-state" id="emptyState" hidden>Nothing here matches your search. Try a different item or category.</p>
+
+  </main>
+
+  <!-- FLOATING TRAY WIDGET -->
+  <div class="tray" id="tray">
+    <button class="tray-summary" id="traySummary" aria-expanded="false" aria-controls="trayPanel">
+      <span class="tray-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20"><rect x="3" y="7" width="18" height="3" rx="1" fill="currentColor"/><path d="M4 10h16l-1.2 8.2a2 2 0 0 1-2 1.8H7.2a2 2 0 0 1-2-1.8L4 10z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </span>
+      <span class="tray-text">
+        <span id="trayCount">Your tray is empty</span>
+        <span class="tray-total" id="trayTotal"></span>
+      </span>
+    </button>
+    <div class="tray-panel" id="trayPanel">
+      <ul class="tray-list" id="trayList"></ul>
+      <div class="tray-footer">
+        <span>Total</span>
+        <strong id="trayFooterTotal">₹0</strong>
+      </div>
+      <button class="tray-clear" id="trayClear">Clear tray</button>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>Prices include GST. Menu and availability may change without notice.</p>
+  </footer>
+
+<script>
+(function () {
+  const rows = Array.from(document.querySelectorAll('.menu-row'));
+  const searchInput = document.getElementById('searchInput');
+  const pills = Array.from(document.querySelectorAll('.pill'));
+  const vegToggle = document.getElementById('vegToggle');
+  const sections = Array.from(document.querySelectorAll('.menu-section'));
+  const emptyState = document.getElementById('emptyState');
+
+  let activeCategory = 'all';
+  let vegOnly = false;
+  let searchTerm = '';
+  let sortDir = { price: null };
+
+  function applyFilters() {
+    let anyVisible = false;
+
+    rows.forEach(row => {
+      const name = row.dataset.name.toLowerCase();
+      const category = row.dataset.category;
+      const veg = row.dataset.veg;
+
+      const matchesCategory = activeCategory === 'all' || category === activeCategory;
+      const matchesVeg = !vegOnly || veg === 'veg';
+      const matchesSearch = !searchTerm || name.includes(searchTerm);
+
+      const visible = matchesCategory && matchesVeg && matchesSearch;
+      row.hidden = !visible;
+      if (visible) anyVisible = true;
+    });
+
+    // Hide whole sections with no visible rows, and hide section if category filter excludes it
+    sections.forEach(section => {
+      const visibleRows = section.querySelectorAll('.menu-row:not([hidden])');
+      const sectionMatchesCategory = activeCategory === 'all' || section.dataset.section === activeCategory;
+      section.hidden = !sectionMatchesCategory || visibleRows.length === 0;
+    });
+
+    emptyState.hidden = anyVisible;
+  }
+
+  searchInput.addEventListener('input', e => {
+    searchTerm = e.target.value.trim().toLowerCase();
+    applyFilters();
+  });
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeCategory = pill.dataset.category;
+      applyFilters();
+    });
+  });
+
+  vegToggle.addEventListener('change', e => {
+    vegOnly = e.target.checked;
+    applyFilters();
+  });
+
+  // Sortable price columns
+  document.querySelectorAll('.sortable').forEach(th => {
+    th.addEventListener('click', () => {
+      const table = th.closest('table');
+      const tbody = table.querySelector('tbody');
+      const key = th.dataset.sort;
+      const dir = sortDir[key] === 'asc' ? 'desc' : 'asc';
+      sortDir[key] = dir;
+
+      const sortedRows = Array.from(tbody.querySelectorAll('tr')).sort((a, b) => {
+        const va = parseFloat(a.dataset[key]);
+        const vb = parseFloat(b.dataset[key]);
+        return dir === 'asc' ? va - vb : vb - va;
+      });
+      sortedRows.forEach(r => tbody.appendChild(r));
+
+      table.querySelectorAll('.sortable').forEach(h => h.classList.remove('sort-asc', 'sort-desc'));
+      th.classList.add(dir === 'asc' ? 'sort-asc' : 'sort-desc');
+    });
+  });
+
+  // Tray
+  const tray = {};
+  const trayCountEl = document.getElementById('trayCount');
+  const trayTotalEl = document.getElementById('trayTotal');
+  const trayListEl = document.getElementById('trayList');
+  const trayFooterTotal = document.getElementById('trayFooterTotal');
+  const traySummary = document.getElementById('traySummary');
+  const trayPanel = document.getElementById('trayPanel');
+  const trayEl = document.getElementById('tray');
+
+  function renderTray() {
+    const items = Object.values(tray);
+    const count = items.reduce((sum, i) => sum + i.qty, 0);
+    const total = items.reduce((sum, i) => sum + i.qty * i.price, 0);
+
+    trayCountEl.textContent = count === 0 ? 'Your tray is empty' : `${count} item${count > 1 ? 's' : ''} in tray`;
+    trayTotalEl.textContent = count === 0 ? '' : `₹${total}`;
+    trayFooterTotal.textContent = `₹${total}`;
+    trayEl.classList.toggle('has-items', count > 0);
+
+    trayListEl.innerHTML = '';
+    items.forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'tray-item';
+      li.innerHTML = `
+        <span class="tray-item-name">${item.name}</span>
+        <span class="tray-item-qty">
+          <button class="qty-btn" data-name="${item.name}" data-action="dec" aria-label="Remove one ${item.name}">−</button>
+          <span>${item.qty}</span>
+          <button class="qty-btn" data-name="${item.name}" data-action="inc" aria-label="Add one more ${item.name}">+</button>
+        </span>
+        <span class="tray-item-price">₹${item.qty * item.price}</span>
+      `;
+      trayListEl.appendChild(li);
+    });
+  }
+
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const row = btn.closest('.menu-row');
+      const name = row.dataset.name;
+      const price = parseFloat(row.dataset.price);
+      if (!tray[name]) tray[name] = { name, price, qty: 0 };
+      tray[name].qty += 1;
+      renderTray();
+
+      btn.classList.remove('pulse');
+      void btn.offsetWidth; // restart animation
+      btn.classList.add('pulse');
+    });
+  });
+
+  trayListEl.addEventListener('click', e => {
+    const btn = e.target.closest('.qty-btn');
+    if (!btn) return;
+    const name = btn.dataset.name;
+    if (btn.dataset.action === 'inc') {
+      tray[name].qty += 1;
+    } else {
+      tray[name].qty -= 1;
+      if (tray[name].qty <= 0) delete tray[name];
+    }
+    renderTray();
+  });
+
+  document.getElementById('trayClear').addEventListener('click', () => {
+    Object.keys(tray).forEach(k => delete tray[k]);
+    renderTray();
+  });
+
+  traySummary.addEventListener('click', () => {
+    const isOpen = trayEl.classList.toggle('open');
+    traySummary.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  applyFilters();
+  renderTray();
+})();
+</script>
+</body>
+</html>
